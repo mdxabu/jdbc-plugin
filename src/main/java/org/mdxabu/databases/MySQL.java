@@ -1,5 +1,8 @@
 package org.mdxabu.databases;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySQL {
@@ -11,6 +14,10 @@ public class MySQL {
     String PORT;
 
     String BASEENDPOINT = "jdbc:mysql://";
+
+    Statement MySQLStatement;
+
+    Connection MySQLConnection;
 
 //    Statement
 
@@ -59,4 +66,18 @@ public class MySQL {
                 ", BASEENDPOINT='" + BASEENDPOINT + '\'' +
                 '}';
     }
+
+    public void start() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        this.MySQLConnection = DriverManager.getConnection(this.BASEENDPOINT);
+        this.MySQLStatement = this.MySQLConnection.createStatement();
+    }
+
+    public void CreateDatabase(String DatabaseName) throws SQLException {
+        String query = "CREATE DATABASE "+DatabaseName+";";
+        this.MySQLStatement.executeUpdate(query);
+
+    }
+
+
 }
