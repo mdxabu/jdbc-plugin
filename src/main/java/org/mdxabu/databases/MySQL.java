@@ -58,12 +58,13 @@ public class MySQL {
 
     @Override
     public String toString() {
-        return "MySQL{" +
-                "USERNAME='" + USERNAME + '\'' +
-                ", PASSWORD='" + PASSWORD + '\'' +
-                ", ENDPOINT='" + ENDPOINT + '\'' +
-                ", PORT='" + PORT + '\'' +
-                ", BASEENDPOINT='" + BASEENDPOINT + '\'' +
+        return "\t\tMySQL Credentials" +
+                "\n=========================="+
+                "\nUSERNAME='" + USERNAME + '\'' +
+                "\nPASSWORD='" + PASSWORD + '\'' +
+                "\nENDPOINT='" + ENDPOINT + '\'' +
+                "\nPORT='" + PORT + '\'' +
+                "\nBASEENDPOINT='" + BASEENDPOINT + '\'' +
                 '}';
     }
 

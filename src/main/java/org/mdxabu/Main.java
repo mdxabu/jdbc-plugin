@@ -10,11 +10,13 @@ public class Main {
 
         MySQL mydb = new MySQL();
 
-        mydb.setCredentials("root","password");
-        mydb.setENDPOINT("localhost");
-        mydb.setPORT("3306");
-        mydb.start();
-        mydb.CreateDatabase("testdbforjdbcplugin");
+//        mydb.setCredentials("root","password");
+//        mydb.setENDPOINT("localhost");
+//        mydb.setPORT("3306");
+//        mydb.start();
+//        mydb.CreateDatabase("testdbforjdbcplugin");
+
+        System.out.println(mydb.toString());
 
     }
 }
