@@ -75,9 +75,9 @@ public class MySQL {
     }
 
     public void CreateDatabase(String DatabaseName) throws SQLException {
-        String query = "CREATE DATABASE "+DatabaseName+";";
+        String query = "CREATE DATABASE IF NOT EXISTS "+DatabaseName+";";
         this.MySQLStatement.executeUpdate(query);
-
+        System.out.println(DatabaseName+" Was Created Successfully :)");
     }
 
 
