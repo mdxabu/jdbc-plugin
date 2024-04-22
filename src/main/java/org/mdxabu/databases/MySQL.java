@@ -13,11 +13,14 @@ public class MySQL {
     String ENDPOINT;
     String PORT;
 
+
     String BASEENDPOINT = "jdbc:mysql://";
 
     Statement MySQLStatement;
 
     Connection MySQLConnection;
+
+
 
 //    Statement
 
@@ -78,6 +81,11 @@ public class MySQL {
         String query = "CREATE DATABASE IF NOT EXISTS "+DatabaseName+";";
         this.MySQLStatement.executeUpdate(query);
         System.out.println(DatabaseName+" Was Created Successfully :)");
+    }
+
+    public void UseDatabase(String DatabaseName) throws SQLException {
+        String query = "USE "+DatabaseName+";";
+        this.MySQLStatement.executeUpdate(query);
     }
 
 
