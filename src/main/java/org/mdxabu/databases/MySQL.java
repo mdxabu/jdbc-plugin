@@ -86,6 +86,13 @@ public class MySQL {
     public void UseDatabase(String DatabaseName) throws SQLException {
         String query = "USE "+DatabaseName+";";
         this.MySQLStatement.executeUpdate(query);
+        System.out.println(DatabaseName+" Was Used Successfully!");
+    }
+
+    public void CreateTable(String TableName) throws SQLException {
+        String query = "CREATE TABLE IF NOT EXISTS "+TableName+";";
+        this.MySQLStatement.executeUpdate(query);
+        System.out.println(TableName+" Was Created Successfully :)");
     }
 
 
