@@ -15,7 +15,7 @@ public class Main {
         mydb.setPORT("3306");
         mydb.start();
         mydb.CreateDatabase("testdbforjdbcplugin");
-        mydb.UseDatabase("testdbforjdbcplugin");
+        mydb.UseDatabase("query for table");
 
 
     }

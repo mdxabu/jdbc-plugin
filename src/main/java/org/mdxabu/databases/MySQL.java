@@ -89,10 +89,8 @@ public class MySQL {
         System.out.println(DatabaseName+" Was Used Successfully!");
     }
 
-    public void CreateTable(String TableName) throws SQLException {
-        String query = "CREATE TABLE IF NOT EXISTS "+TableName+";";
-        this.MySQLStatement.executeUpdate(query);
-        System.out.println(TableName+" Was Created Successfully :)");
+    public void CreateTable(String Query) throws SQLException {
+        this.MySQLStatement.executeUpdate(Query);
     }
 
 
