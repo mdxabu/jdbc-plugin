@@ -1,12 +1,11 @@
-package org.mdxabu.databases;
+package org.mdxabu.databases.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MySQL {
-
+public class AWSMySQL {
     String USERNAME;
 
     String PASSWORD;
@@ -14,7 +13,7 @@ public class MySQL {
     String PORT;
 
 
-    String BASEENDPOINT = "jdbc:mysql://";
+    String BASEENDPOINT = "jdbc:mysql:aws://";
 
     Statement MySQLStatement;
 
@@ -92,6 +91,4 @@ public class MySQL {
     public void CreateTable(String Query) throws SQLException {
         this.MySQLStatement.executeUpdate(Query);
     }
-
-
 }

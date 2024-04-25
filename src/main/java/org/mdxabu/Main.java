@@ -1,6 +1,6 @@
 package org.mdxabu;
 
-import org.mdxabu.databases.MySQL;
+import org.mdxabu.databases.mysql.MySQL;
 
 import java.sql.SQLException;
 
