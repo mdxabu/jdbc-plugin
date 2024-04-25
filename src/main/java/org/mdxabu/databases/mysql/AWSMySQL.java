@@ -21,39 +21,45 @@ public class AWSMySQL {
 
 
 
-//    Statement
-
+    // Set Credentials like: Username & Password of the AWS database
     public void setCredentials(String USERNAME,String PASSWORD) {
         this.USERNAME = USERNAME;
         this.PASSWORD = PASSWORD;
     }
 
+    // Set Endpoint of the AWS database
     public void setENDPOINT(String ENDPOINT) {
         this.ENDPOINT = ENDPOINT;
         BASEENDPOINT+=this.ENDPOINT;
     }
 
+    // Set Port of the AWS database
     public void setPORT(String PORT) {
         this.PORT = PORT;
         BASEENDPOINT+= ":"+this.PORT;
     }
 
+    // Get Username for the AWS database
     public String getUSERNAME() {
         return USERNAME;
     }
 
+    // Get Password for the AWS database
     public String getPASSWORD() {
         return PASSWORD;
     }
 
+    // Get Endpoint of the AWS database
     public String getENDPOINT() {
         return ENDPOINT;
     }
 
+    // Get Port of the AWS database
     public String getPORT() {
         return PORT;
     }
 
+    // Get BaseEndpoint of the AWS database
     public String getBASEENDPOINT() {
         return BASEENDPOINT;
     }
