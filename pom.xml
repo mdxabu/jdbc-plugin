@@ -14,6 +14,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>jdbc-plugin maven package</name>
+            <url>https://maven.pkg.github.com/mdxabu/jdbc-plugin</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- MySQL Connector -->
         <dependency>
