@@ -24,15 +24,10 @@ To get started with the JDBC-Plugin, follow these steps:
     ```xml
     <!-- Maven -->
     <dependency>
-        <groupId>com.example</groupId>
-        <artifactId>jdbc-plugin</artifactId>
-        <version>x.x.x</version>
+      <groupId>org.mdxabu</groupId>
+      <artifactId>jdbc-plugin</artifactId>
+      <version>1.0</version>
     </dependency>
-    ```
-
-    ```groovy
-    // Gradle
-    implementation 'com.example:jdbc-plugin:x.x.x'
     ```
 
 2. **Configure Database Connection:** Set up database connection properties such as URL, username, and password in your application's configuration.
