@@ -14,14 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Maven Dependency-->
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>jdbc-plugin maven package</name>
-            <url>https://maven.pkg.github.com/mdxabu/jdbc-plugin</url>
-        </repository>
-    </distributionManagement>
+
 
     <dependencies>
         <!-- MySQL Connector -->
@@ -36,6 +29,12 @@
             <groupId>software.aws.rds</groupId>
             <artifactId>aws-mysql-jdbc</artifactId>
             <version>1.1.14</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
