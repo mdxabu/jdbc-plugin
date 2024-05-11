@@ -93,5 +93,10 @@ public class MySQL {
         this.MySQLStatement.executeUpdate(Query);
     }
 
+    public void DeleteTable(String Table) throws SQLException {
+        String query = "DROP TABLE "+Table;
+        this.MySQLStatement.executeUpdate(query);
+    }
+
 
 }

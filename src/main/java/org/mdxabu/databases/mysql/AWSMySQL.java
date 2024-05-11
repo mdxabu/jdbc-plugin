@@ -97,4 +97,9 @@ public class AWSMySQL {
     public void CreateTable(String Query) throws SQLException {
         this.MySQLStatement.executeUpdate(Query);
     }
+
+    public void DeleteTable(String Table) throws SQLException {
+        String query = "DROP TABLE "+Table;
+        this.MySQLStatement.executeUpdate(query);
+    }
 }
