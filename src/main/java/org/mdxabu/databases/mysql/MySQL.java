@@ -78,19 +78,19 @@ public class MySQL {
         this.MySQLStatement = this.MySQLConnection.createStatement();
     }
 
-    public void CreateDatabase(String DatabaseName) throws SQLException {
+    public void createDatabase(String DatabaseName) throws SQLException {
         String query = "CREATE DATABASE IF NOT EXISTS "+DatabaseName+";";
         this.MySQLStatement.executeUpdate(query);
         System.out.println(DatabaseName+" Was Created Successfully :)");
     }
 
-    public void UseDatabase(String DatabaseName) throws SQLException {
+    public void useDatabase(String DatabaseName) throws SQLException {
         String query = "USE "+DatabaseName+";";
         this.MySQLStatement.executeUpdate(query);
         System.out.println(DatabaseName+" Was Used Successfully!");
     }
 
-    public void CreateTable(String tableName, Map<String, String> columns) throws SQLException {
+    public void createTable(String tableName, Map<String, String> columns) throws SQLException {
         StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + " (");
 
         for (Map.Entry<String, String> column : columns.entrySet()) {
@@ -105,7 +105,7 @@ public class MySQL {
         System.out.println(tableName + " Was Created Successfully!");
     }
 
-    public void DeleteTable(String Table) throws SQLException {
+    public void deleteTable(String Table) throws SQLException {
         String query = "DROP TABLE "+Table;
         this.MySQLStatement.executeUpdate(query);
     }

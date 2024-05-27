@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 public class AWSMySQL {
     String USERNAME;
@@ -94,8 +95,19 @@ public class AWSMySQL {
         System.out.println(DatabaseName+" Was Used Successfully!");
     }
 
-    public void CreateTable(String Query) throws SQLException {
-        this.MySQLStatement.executeUpdate(Query);
+    public void createTable(String tableName, Map<String, String> columns) throws SQLException {
+        StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + " (");
+
+        for (Map.Entry<String, String> column : columns.entrySet()) {
+            query.append(column.getKey()).append(" ").append(column.getValue()).append(", ");
+        }
+
+        query.setLength(query.length() - 2);
+
+        query.append(");");
+
+        this.MySQLStatement.executeUpdate(query.toString());
+        System.out.println(tableName + " Was Created Successfully!");
     }
 
     public void DeleteTable(String Table) throws SQLException {
