@@ -1,3 +1,7 @@
+
+![jdbc-plugin-banner](https://github.com/mdxabu/jdbc-plugin/assets/115330277/7b012a90-753e-4794-b7ef-0425798f7ea3)
+
+
 # JDBC-Plugin
 
 The JDBC-Plugin, developers can significantly reduce development time and effort by writing database operations once and seamlessly switching between different databases without needing to rewrite significant portions of code. This flexibility makes it easier to adapt applications to changing requirements or migrate between different database platforms with minimal code changes.
