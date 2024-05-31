@@ -13,7 +13,7 @@ public class MySQL {
     String PASSWORD;
     String ENDPOINT;
     String PORT;
-
+    String Database;
 
     String BASEENDPOINT = "jdbc:mysql://";
 
@@ -79,15 +79,21 @@ public class MySQL {
     }
 
     public void createDatabase(String DatabaseName) throws SQLException {
+        this.Database = DatabaseName;
         String query = "CREATE DATABASE IF NOT EXISTS "+DatabaseName+";";
         this.MySQLStatement.executeUpdate(query);
         System.out.println(DatabaseName+" Was Created Successfully :)");
     }
 
-    public void useDatabase(String DatabaseName) throws SQLException {
-        String query = "USE "+DatabaseName+";";
-        this.MySQLStatement.executeUpdate(query);
-        System.out.println(DatabaseName+" Was Used Successfully!");
+    public void useDatabase(){
+        String query = "USE "+this.Database+";";
+        try {
+            this.MySQLStatement.executeUpdate(query);
+        System.out.println(this.Database+" Was Used Successfully!");
+        }
+        catch (Exception e){
+            System.err.println("Something error on using database, Check whether database is present or not.");
+        }
     }
 
     public void createTable(String tableName, Map<String, String> columns) throws SQLException {

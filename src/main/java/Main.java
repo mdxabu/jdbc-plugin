@@ -17,13 +17,13 @@ public class Main {
         mySQL.setPORT("3306");
         try {
             mySQL.start();
-            mySQL.useDatabase("testdbforjdbcplugin");
+            mySQL.createDatabase("jdbctesting");
+            mySQL.useDatabase();
 
             Map<String, String> columns = new HashMap<>();
             columns.put("id", "INT PRIMARY KEY AUTO_INCREMENT");
             columns.put("name", "VARCHAR(255)");
             columns.put("email", "VARCHAR(255)");
-
             mySQL.createTable("users",columns);
         } catch (Exception e) {
             throw new RuntimeException(e);
