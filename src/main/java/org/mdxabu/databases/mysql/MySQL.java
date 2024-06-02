@@ -76,6 +76,12 @@ public class MySQL {
         Class.forName("com.mysql.cj.jdbc.Driver");
         this.MySQLConnection = DriverManager.getConnection(this.BASEENDPOINT);
         this.MySQLStatement = this.MySQLConnection.createStatement();
+        System.out.println("    _     _ _                     _             _       \n" +
+                "   (_) __| | |__   ___      _ __ | |_   _  __ _(_)_ __  \n" +
+                "   | |/ _` | '_ \\ / __|____| '_ \\| | | | |/ _` | | '_ \\ \n" +
+                "   | | (_| | |_) | (_|_____| |_) | | |_| | (_| | | | | |\n" +
+                "  _/ |\\__,_|_.__/ \\___|    | .__/|_|\\__,_|\\__, |_|_| |_|\n" +
+                " |__/                      |_|            |___/         ");
     }
 
     public void createDatabase(String DatabaseName) throws SQLException {
