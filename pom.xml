@@ -30,6 +30,14 @@
             <artifactId>aws-mysql-jdbc</artifactId>
             <version>1.1.14</version>
         </dependency>
+
+        <!-- MongoDB Connector-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-jdbc</artifactId>
+            <version>2.1.2</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
