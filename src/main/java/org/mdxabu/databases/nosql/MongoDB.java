@@ -1,6 +1,7 @@
 package org.mdxabu.databases.nosql;
 
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
 public class MongoDB {
@@ -20,15 +21,15 @@ public class MongoDB {
         return mongoClient;
     }
 
-    public void setMongoClient(MongoClient mongoClient) {
-        this.mongoClient = mongoClient;
+    public void setMongoClient(String connectionstring) {
+        this.mongoClient = MongoClients.create(connectionstring);
     }
 
-    public MongoDatabase getDb() {
-        return db;
+    public void createDatabase(String databaseName) {
+        db = this.mongoClient.getDatabase(databaseName);
     }
 
-    public void setDb(MongoDatabase db) {
-        this.db = db;
-    }
+
+
+
 }

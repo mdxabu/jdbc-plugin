@@ -3,31 +3,14 @@ This class only for instant testing for all database.
  */
 
 
-import org.mdxabu.databases.mysql.MySQL;
-
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import org.mdxabu.databases.nosql.MongoDB;
 
 public class Main {
     public static void main(String[] args) {
-        MySQL mySQL = new MySQL();
-        mySQL.setCredentials("root", "password");
-        mySQL.setENDPOINT("localhost");
-        mySQL.setPORT("3306");
-        try {
-            mySQL.start();
-            mySQL.createDatabase("jdbctesting");
-            mySQL.useDatabase();
+        MongoDB mongo = new MongoDB();
+        mongo.setMongoClient("mongodb://localhost:27017/");
+        mongo.createDatabase("testjdbcdb");
 
-            Map<String, String> columns = new HashMap<>();
-            columns.put("id", "INT PRIMARY KEY AUTO_INCREMENT");
-            columns.put("name", "VARCHAR(255)");
-            columns.put("email", "VARCHAR(255)");
-            mySQL.createTable("users",columns);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }

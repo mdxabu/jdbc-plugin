@@ -1,5 +1,7 @@
 package org.mdxabu.databases.mysql;
 
+import org.mdxabu.databases.run.run;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -76,12 +78,7 @@ public class MySQL {
         Class.forName("com.mysql.cj.jdbc.Driver");
         this.MySQLConnection = DriverManager.getConnection(this.BASEENDPOINT);
         this.MySQLStatement = this.MySQLConnection.createStatement();
-        System.out.println("    _     _ _                     _             _       \n" +
-                "   (_) __| | |__   ___      _ __ | |_   _  __ _(_)_ __  \n" +
-                "   | |/ _` | '_ \\ / __|____| '_ \\| | | | |/ _` | | '_ \\ \n" +
-                "   | | (_| | |_) | (_|_____| |_) | | |_| | (_| | | | | |\n" +
-                "  _/ |\\__,_|_.__/ \\___|    | .__/|_|\\__,_|\\__, |_|_| |_|\n" +
-                " |__/                      |_|            |___/         ");
+        run asciitext = new run();
     }
 
     public void createDatabase(String DatabaseName) throws SQLException {
@@ -102,19 +99,24 @@ public class MySQL {
         }
     }
 
-    public void createTable(String tableName, Map<String, String> columns) throws SQLException {
-        StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + " (");
+    public void createTable(String tableName, Map<String, String> columns)  {
+        try {
+            StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + " (");
 
-        for (Map.Entry<String, String> column : columns.entrySet()) {
-            query.append(column.getKey()).append(" ").append(column.getValue()).append(", ");
+            for (Map.Entry<String, String> column : columns.entrySet()) {
+                query.append(column.getKey()).append(" ").append(column.getValue()).append(", ");
+            }
+
+            query.setLength(query.length() - 2);
+
+            query.append(");");
+
+            this.MySQLStatement.executeUpdate(query.toString());
+            System.out.println(tableName + " Was Created Successfully!");
         }
-
-        query.setLength(query.length() - 2);
-
-        query.append(");");
-
-        this.MySQLStatement.executeUpdate(query.toString());
-        System.out.println(tableName + " Was Created Successfully!");
+        catch (Exception e){
+            System.err.println("This table already created!");
+        }
     }
 
     public void deleteTable(String Table) throws SQLException {
