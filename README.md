@@ -1,6 +1,7 @@
 
 ![jdbc-plugin-banner](https://github.com/mdxabu/jdbc-plugin/assets/115330277/3010959d-efc0-4a4e-8836-891132792dcd)
 
+![License](https://img.shields.io/github/license/mdxabu/jdbc-plugin)
 
 
 # JDBC-Plugin
@@ -19,6 +20,21 @@ With the JDBC-Plugin, developers can significantly reduce development time and e
 - **Code Reusability:** Write database operations once and reuse them across different databases, reducing development time and effort.
 - **Flexibility:** Easily adapt applications to changing requirements or migrate between different database platforms with minimal code changes.
 - **Simplified Development:** Focus on writing database-agnostic code, enabling easier maintenance and portability of applications.
+
+## Supported Databases
+
+| Database                | Supported |
+|-------------------------|-----------|
+| MySQL                   | ✅       |
+| PostgreSQL              | ❌       |
+| Oracle                  | ❌       |
+| Microsoft SQL Server    | ❌       |
+| SQLite                  | ❌       |
+| MongoDB                 | **WORKING ON IT**        |
+| H2 (in-memory database) | ❌        |
+| DB2                     | ❌        |
+| Cassandra               | ❌        |
+
 
 ## Getting Started
 
@@ -47,16 +63,9 @@ To get started with the JDBC-Plugin, follow these steps:
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
+See [CONTRIBUTING.md](github.com/mdxabu/jdbc-plugin/CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
 
-## Running Tests
-
-To run tests, run the following command
-
-```bash
-  mvn test
-```
 
