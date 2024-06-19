@@ -9,10 +9,6 @@
 With the JDBC-Plugin, developers can significantly reduce development time and effort by writing database operations once and seamlessly switching between different databases without needing to rewrite significant portions of code. This flexibility makes it easier to adapt applications to changing requirements or migrate between different database platforms with minimal code changes.
 
 
-## Authors
-
-- [@mdxabu](https://www.github.com/mdxabu)
-
 ## Features
 
 - **Multi-Database Support:** Interact with different database systems such as MySQL, PostgreSQL, Oracle, etc., without needing to change significant portions of code.
@@ -41,15 +37,16 @@ With the JDBC-Plugin, developers can significantly reduce development time and e
 To get started with the JDBC-Plugin, follow these steps:
 
 1. **Add Dependency:** Add the JDBC-Plugin dependency to your Java project's build configuration file (e.g., `pom.xml` for Maven or `build.gradle` for Gradle).
-
-    ```xml
-    <!-- Maven -->
-    <dependency>
-      <groupId>org.mdxabu</groupId>
-      <artifactId>jdbc-plugin</artifactId>
-      <version>1.0</version>
-    </dependency>
-    ```
+> [!IMPORTANT]
+> This Dependency is not working right now, It's on the development stage.
+>    ```xml
+>    <!-- Maven -->
+>    <dependency>
+>      <groupId>org.mdxabu</groupId>
+>      <artifactId>jdbc-plugin</artifactId>
+>      <version>1.0</version>
+>    </dependency>
+>    ```
 
 2. **Configure Database Connection:** Set up database connection properties such as URL, username, and password in your application's configuration.
 
@@ -63,7 +60,7 @@ To get started with the JDBC-Plugin, follow these steps:
 
 Contributions are always welcome!
 
-See [CONTRIBUTING.md](github.com/mdxabu/jdbc-plugin/CONTRIBUTING.md) for ways to get started.
+See [CONTRIBUTING.md](https://github.com/mdxabu/jdbc-plugin/blob/main/CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
