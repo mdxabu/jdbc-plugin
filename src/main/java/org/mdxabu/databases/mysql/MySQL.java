@@ -89,13 +89,28 @@ public class MySQL {
     }
 
     public void useDatabase(){
-        String query = "USE "+this.Database+";";
-        try {
-            this.MySQLStatement.executeUpdate(query);
-        System.out.println(this.Database+" Was Used Successfully!");
+
+        if(this.Database != null) {
+            String query = "USE "+this.Database+";";
+            try {
+                this.MySQLStatement.executeUpdate(query);
+                System.out.println(this.Database + " Was Used Successfully!");
+            } catch (Exception e) {
+                System.err.println("Something error on using database, Check whether database is present or not.");
+            }
         }
-        catch (Exception e){
-            System.err.println("Something error on using database, Check whether database is present or not.");
+    }
+
+    public void useDatabase(String DatabaseName){
+        if(this.Database==null){
+            this.Database = DatabaseName;
+            String query = "USE "+DatabaseName+";";
+            try {
+                this.MySQLStatement.executeUpdate(query);
+                System.out.println(this.Database + " Was Used Successfully!");
+            } catch (Exception e) {
+                System.err.println("Something error on using database, Check whether database is present or not.");
+            }
         }
     }
 
@@ -114,9 +129,11 @@ public class MySQL {
             this.MySQLStatement.executeUpdate(query.toString());
             System.out.println(tableName + " Was Created Successfully!");
         }
-        catch (Exception e){
-            System.err.println("This table already created!");
+        catch(Exception e){
+            System.err.println("The table **"+tableName+"** could not be created or already exists.");
         }
+
+
     }
 
     public void deleteTable(String Table) throws SQLException {
