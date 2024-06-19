@@ -65,4 +65,4 @@ By contributing to jdbc-plugin, you agree that your contributions will be licens
 
 Thank you for your contributions!
 
-jdbc-plugin.
+
