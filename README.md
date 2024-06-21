@@ -1,3 +1,4 @@
+![Build](https://github.com/mdxabu/jdbc-plugin/workflows/Java%20CI%20with%20Maven/badge.svg?branch=main)
 
 ![jdbc-plugin-banner](https://github.com/mdxabu/jdbc-plugin/assets/115330277/3010959d-efc0-4a4e-8836-891132792dcd)
 
