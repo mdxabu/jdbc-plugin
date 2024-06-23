@@ -4,7 +4,6 @@ This class only for instant testing for all database.
 
 
 import org.mdxabu.databases.mysql.MySQL;
-import org.mdxabu.databases.nosql.MongoDB;
 
 import java.sql.SQLException;
 import java.util.HashMap;

@@ -2,10 +2,7 @@ package org.mdxabu.databases.mysql;
 
 import org.mdxabu.databases.run.run;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Map;
 
 public class MySQL {
@@ -139,6 +136,14 @@ public class MySQL {
     public void deleteTable(String Table) throws SQLException {
         String query = "DROP TABLE "+Table;
         this.MySQLStatement.executeUpdate(query);
+    }
+
+    public void printTable(String TableName) throws SQLException {
+        String query = "SELECT * FROM " + TableName;
+        ResultSet tableRs = this.MySQLStatement.executeQuery(query);
+        while (tableRs.next()){
+
+        }
     }
 
 
