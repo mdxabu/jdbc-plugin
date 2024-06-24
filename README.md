@@ -1,5 +1,7 @@
 
-![jdbc-plugin-banner](https://github.com/mdxabu/jdbc-plugin/assets/115330277/3010959d-efc0-4a4e-8836-891132792dcd)
+![jdbc-plugin-banner](https://github.com/mdxabu/jdbc-plugin/assets/115330277/737fd4e3-adcf-4448-87ae-4f2b59488d87)
+
+
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mdxabu/jdbc-plugin/maven.yml)
 ![License](https://img.shields.io/github/license/mdxabu/jdbc-plugin)
 
