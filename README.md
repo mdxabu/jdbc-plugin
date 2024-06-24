@@ -23,15 +23,15 @@ With the JDBC-Plugin, developers can significantly reduce development time and e
 
 | Database                | Supported |
 |-------------------------|-----------|
-| MySQL                   | ✅       |
-| PostgreSQL              | ❌       |
-| Oracle                  | ❌       |
-| Microsoft SQL Server    | ❌       |
-| SQLite                  | ❌       |
-| MongoDB                 | **WORKING ON IT**        |
-| H2 (in-memory database) | ❌        |
-| DB2                     | ❌        |
-| Cassandra               | ❌        |
+| MySQL                   | ✅         |
+| PostgreSQL              | ❌         |
+| Oracle                  | ❌         |
+| Microsoft SQL Server    | ❌         |
+| SQLite                  | ❌         |
+| MongoDB                 | ✅         |
+| H2 (in-memory database) | ❌         |
+| DB2                     | ❌         |
+| Cassandra               | ❌         |
 
 
 ## Getting Started

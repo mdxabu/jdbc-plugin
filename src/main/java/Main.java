@@ -16,11 +16,12 @@ public class Main {
 
         String databaseName = "jdbctestingmongodb";
 
-        mongoDB.createMongoDatabase(databaseName);
+        mongoDB.deleteMongoDatabase(databaseName);
         System.out.println("Database: " + mongoDB.getMongoDatabase());
 
+
         String collectionName = "jdbctestingmongodbcollection";
-        mongoDB.createMongoCollection(collectionName);
+        mongoDB.deleteMongoCollection(collectionName);
 
 
         System.out.println("MongoDB Connection String: " + mongoDB.getMongoConnectionString());

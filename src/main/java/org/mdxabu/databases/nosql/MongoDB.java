@@ -33,6 +33,14 @@ public class MongoDB {
             return "No MongoDB connection established.";
         }
     }
+    public String getMongoDatabase() {
+        if (this.mongoDatabase != null) {
+            return this.mongoDatabase.getName();
+        } else {
+            return "No MongoDB database selected.";
+        }
+    }
+
     public void createMongoDatabase(String DatabaseName) {
         try {
             if (this.mongoClient != null && DatabaseName != null && !DatabaseName.isEmpty()) {
@@ -45,11 +53,19 @@ public class MongoDB {
             logger.error("Error while creating or accessing database {}", DatabaseName, e);
         }
     }
-    public String getMongoDatabase() {
-        if (this.mongoDatabase != null) {
-            return this.mongoDatabase.getName();
-        } else {
-            return "No MongoDB database selected.";
+    public void deleteMongoDatabase(String DatabaseName) {
+        try{
+            if (this.mongoClient != null && DatabaseName != null && !DatabaseName.isEmpty()) {
+                this.mongoDatabase = this.mongoClient.getDatabase(DatabaseName);
+                this.mongoDatabase.drop();
+                logger.info("Database '{}' deleted successfully", DatabaseName);
+            }
+            else {
+                logger.error("Database name is null or Check the Database name correctly to delete.");
+            }
+        }
+        catch (Exception e) {
+            logger.error("Error while deleting or accessing database {}", DatabaseName);
         }
     }
     public void createMongoCollection(String CollectionName) {
@@ -58,10 +74,26 @@ public class MongoDB {
                 this.mongoDatabase.createCollection(CollectionName);
                 logger.info("Collection '{}' created successfully", CollectionName);
             } else {
-                logger.error("Collection name is null or empty, So, We can't create a this collection");
+                logger.error("Collection name is null or empty, So, We can't create a this collection.");
             }
         } catch (Exception e) {
             logger.error("Error while creating collection {}", CollectionName);
+        }
+    }
+
+    public void deleteMongoCollection(String CollectionName) {
+        try{
+            if (this.mongoDatabase != null && CollectionName != null && !CollectionName.isEmpty()) {
+                this.mongoDatabase.getCollection(CollectionName).drop();
+                this.mongoDatabase = null;
+                logger.info("Collection '{}' deleted successfully", CollectionName);
+            }
+            else {
+                logger.error("Collection name is null or empty, So, We can't delete a this collection or Check the name correctly.");
+            }
+        }
+        catch (Exception e){
+            logger.error("Error while deleting collection {}", CollectionName, e);
         }
     }
 }
