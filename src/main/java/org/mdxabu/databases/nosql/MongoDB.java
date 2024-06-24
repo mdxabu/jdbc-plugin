@@ -6,6 +6,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.mdxabu.databases.run.run;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +17,11 @@ public class MongoDB {
     MongoDatabase mongoDatabase;
     MongoCollection<Document> mongoCollection;
     private static final Logger logger = LoggerFactory.getLogger(MongoDB.class);
+
+
+    public MongoDB() {
+        run asciitext = new run();
+    }
 
     public void setMongoConnectionString(String mongoConnectionString) {
         try {
@@ -37,7 +43,7 @@ public class MongoDB {
         if (this.mongoDatabase != null) {
             return this.mongoDatabase.getName();
         } else {
-            return "No MongoDB database selected.";
+            return "There is no Database in that name.";
         }
     }
 
@@ -58,6 +64,7 @@ public class MongoDB {
             if (this.mongoClient != null && DatabaseName != null && !DatabaseName.isEmpty()) {
                 this.mongoDatabase = this.mongoClient.getDatabase(DatabaseName);
                 this.mongoDatabase.drop();
+                this.mongoDatabase = null;
                 logger.info("Database '{}' deleted successfully", DatabaseName);
             }
             else {
@@ -82,18 +89,33 @@ public class MongoDB {
     }
 
     public void deleteMongoCollection(String CollectionName) {
-        try{
+        try {
             if (this.mongoDatabase != null && CollectionName != null && !CollectionName.isEmpty()) {
-                this.mongoDatabase.getCollection(CollectionName).drop();
-                this.mongoDatabase = null;
+                this.mongoCollection= this.mongoDatabase.getCollection(CollectionName);
+                this.mongoCollection.drop();
+                this.mongoCollection = null;
                 logger.info("Collection '{}' deleted successfully", CollectionName);
+            } else {
+                logger.error("Collection name is null or empty, or MongoDatabase is not selected.");
             }
-            else {
-                logger.error("Collection name is null or empty, So, We can't delete a this collection or Check the name correctly.");
+        } catch (Exception e) {
+            logger.error("Error while deleting collection {}", CollectionName, e);
+        }
+    }
+
+    public void insertOneDocument(String CollectionName, Document document){
+        try{
+            if (this.mongoDatabase != null && CollectionName != null && !CollectionName.isEmpty() && !document.isEmpty()) {
+                this.mongoCollection = this.mongoDatabase.getCollection(CollectionName);
+                this.mongoCollection.insertOne(document);
+                logger.info("Document inserted successfully");
+            }
+            else{
+                logger.error("Database, Collection, or Document is empty! Check Correctly to insert.");
             }
         }
         catch (Exception e){
-            logger.error("Error while deleting collection {}", CollectionName, e);
+            logger.error("Error while inserting document", e);
         }
     }
 }

@@ -3,6 +3,7 @@ This class only for instant testing for all database.
  */
 
 
+import org.bson.Document;
 import org.mdxabu.databases.nosql.MongoDB;
 
 public class Main {
@@ -14,17 +15,20 @@ public class Main {
 
         mongoDB.setMongoConnectionString(mongoConnectionString);
 
-        String databaseName = "jdbctestingmongodb";
+        mongoDB.createMongoDatabase("user-data");
+        mongoDB.createMongoCollection("users");
 
-        mongoDB.deleteMongoDatabase(databaseName);
-        System.out.println("Database: " + mongoDB.getMongoDatabase());
+        Document doc = new Document("name","abu")
+                .append("age",20)
+                .append("place","India");
 
+        mongoDB.insertOneDocument("users",doc);
 
-        String collectionName = "jdbctestingmongodbcollection";
-        mongoDB.deleteMongoCollection(collectionName);
+        System.out.println(mongoDB.getMongoDatabase());
 
-
-        System.out.println("MongoDB Connection String: " + mongoDB.getMongoConnectionString());
+        mongoDB.deleteMongoCollection("users");
+        mongoDB.deleteMongoDatabase("user-data");
+        System.out.println(mongoDB.getMongoDatabase());
     }
 
 }
