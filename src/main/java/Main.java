@@ -3,26 +3,12 @@ This class only for instant testing for all database.
  */
 
 
-import org.bson.Document;
-import org.mdxabu.databases.nosql.MongoDB;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) {
-
-        String mongoConnectionString = "mongodb://localhost:27017";
-
-        MongoDB mongoDB = new MongoDB();
-
-        mongoDB.setMongoConnectionString(mongoConnectionString);
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
 
-
-        mongoDB.deleteMongoCollection("users");
-        mongoDB.deleteMongoDatabase("user-data");
-        System.out.println(mongoDB.getMongoDatabase());
     }
 
 }

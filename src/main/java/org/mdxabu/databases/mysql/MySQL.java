@@ -4,6 +4,7 @@ import org.mdxabu.databases.run.run;
 
 import java.sql.*;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class MySQL {
 
@@ -40,24 +41,26 @@ public class MySQL {
     }
 
     public String getUSERNAME() {
-        return USERNAME;
+        return this.USERNAME;
     }
 
     public String getPASSWORD() {
-        return PASSWORD;
+        return this.PASSWORD;
     }
 
     public String getENDPOINT() {
-        return ENDPOINT;
+        return this.ENDPOINT;
     }
 
     public String getPORT() {
-        return PORT;
+        return this.PORT;
     }
 
     public String getBASEENDPOINT() {
-        return BASEENDPOINT;
+        return this.BASEENDPOINT;
     }
+
+    public String getDatabase(){return this.Database;}
 
     @Override
     public String toString() {
@@ -133,9 +136,16 @@ public class MySQL {
 
     }
 
-    public void deleteTable(String Table) throws SQLException {
-        String query = "DROP TABLE "+Table;
-        this.MySQLStatement.executeUpdate(query);
+    public void deleteTable(String tableName) throws SQLException {
+        if(tableName!=null) {
+            String query = "DROP TABLE " + tableName;
+            this.MySQLStatement.executeUpdate(query);
+            System.out.println(tableName + " Was Deleted Successfully!");
+        }
+        else{
+            System.err.println("The Table name not be a null value.");
+        }
+
     }
 
     public void printTable(String TableName) throws SQLException {
