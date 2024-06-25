@@ -10,6 +10,8 @@ import org.mdxabu.databases.run.run;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class MongoDB {
 
     String collection_name = null;
@@ -115,7 +117,23 @@ public class MongoDB {
             }
         }
         catch (Exception e){
-            logger.error("Error while inserting document", e);
+            logger.error("Error while inserting document");
+        }
+    }
+
+    public void insertManyDocuments(String CollectionName, List<Document> documents){
+        try{
+            if(this.mongoDatabase!=null && CollectionName != null && !CollectionName.isEmpty() && !documents.isEmpty()){
+                this.mongoCollection = this.mongoDatabase.getCollection(CollectionName);
+                this.mongoCollection.insertMany(documents);
+                logger.info("Documents inserted successfully");
+            }
+            else {
+                logger.error("Database, Collection, or Documents is empty! Check Correctly to insert.");
+            }
+        }
+        catch (Exception e){
+            logger.error("Error while inserting documents");
         }
     }
 }
