@@ -88,6 +88,15 @@ public class MySQL {
         System.out.println(DatabaseName+" Was Created Successfully :)");
     }
 
+    public void deleteDatabase(String DatabaseName) throws SQLException {
+
+        this.Database = null;
+        String query = "DROP DATABASE "+ DatabaseName;
+        this.MySQLStatement.executeUpdate(query);
+        System.out.println(DatabaseName+ "Was Successfully Deleted");
+
+    }
+
     public void useDatabase(){
 
         if(this.Database != null) {
