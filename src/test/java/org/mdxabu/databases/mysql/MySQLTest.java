@@ -22,7 +22,7 @@ public class MySQLTest {
         mySQL.setPORT("3306");
         mySQL.start();
         mySQL.createDatabase("testDB");
-        mySQL.useDatabase("testDB");
+        mySQL.useDatabase();
     }
 
     @AfterEach
@@ -39,29 +39,24 @@ public class MySQLTest {
     }
 
     @Test
-    public void testCreateTable() throws SQLException {
+    public void testCreateTable() throws SQLException, ClassNotFoundException {
+
         Map<String, String> columns = new HashMap<>();
         columns.put("id", "INT PRIMARY KEY AUTO_INCREMENT");
         columns.put("name", "VARCHAR(100)");
+
+        System.out.println("Creating table...");
         mySQL.createTable("testTable", columns);
+        System.out.println("Table created. Now deleting...");
 
     }
 
     @Test
-    public void testDeleteTable() throws SQLException {
-
-        Map<String, String> columns = new HashMap<>();
-        columns.put("id", "INT PRIMARY KEY AUTO_INCREMENT");
-        columns.put("name", "VARCHAR(100)");
-        mySQL.createTable("testTable", columns);
-
-
-        mySQL.useDatabase("testDB");
-
-        mySQL.deleteTable("testDB");
-
-
+    public void testDeleteTable() throws SQLException, ClassNotFoundException {
+        mySQL.deleteTable("testTable");
+        System.out.println("Table deleted.");
     }
+
 
     @Test
     public void testUseDatabase() {

@@ -4,40 +4,30 @@ import org.mdxabu.databases.run.run;
 
 import java.sql.*;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class MySQL {
 
-    String USERNAME;
+    private String USERNAME;
+    private String PASSWORD;
+    private String ENDPOINT;
+    private String PORT;
+    private String Database;
 
-    String PASSWORD;
-    String ENDPOINT;
-    String PORT;
-    String Database;
+    private String BASEENDPOINT = "jdbc:mysql://";
 
-    String BASEENDPOINT = "jdbc:mysql://";
+    private Statement MySQLStatement;
 
-    Statement MySQLStatement;
-
-    Connection MySQLConnection;
-
-
-
-//    Statement
-
-    public void setCredentials(String USERNAME,String PASSWORD) {
+    public void setCredentials(String USERNAME, String PASSWORD) {
         this.USERNAME = USERNAME;
         this.PASSWORD = PASSWORD;
     }
 
     public void setENDPOINT(String ENDPOINT) {
         this.ENDPOINT = ENDPOINT;
-        BASEENDPOINT+=this.ENDPOINT;
     }
 
     public void setPORT(String PORT) {
         this.PORT = PORT;
-        BASEENDPOINT+= ":"+this.PORT;
     }
 
     public String getUSERNAME() {
@@ -60,47 +50,47 @@ public class MySQL {
         return this.BASEENDPOINT;
     }
 
-    public String getDatabase(){return this.Database;}
+    public String getDatabase() {
+        return this.Database;
+    }
 
     @Override
     public String toString() {
         return "\t\tMySQL Credentials" +
-                "\n=========================="+
+                "\n==========================" +
                 "\nUSERNAME='" + USERNAME + '\'' +
                 "\nPASSWORD='" + PASSWORD + '\'' +
                 "\nENDPOINT='" + ENDPOINT + '\'' +
                 "\nPORT='" + PORT + '\'' +
-                "\nBASEENDPOINT='" + BASEENDPOINT + '\'' +
+                "\nBASEENDPOINT='" + BASEENDPOINT + ENDPOINT + ":" + PORT + "/'" +
                 '}';
     }
 
     public void start() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        this.MySQLConnection = DriverManager.getConnection(this.BASEENDPOINT);
-        this.MySQLStatement = this.MySQLConnection.createStatement();
+        String fullEndpoint = BASEENDPOINT + ENDPOINT + ":" + PORT;
+        Connection mySQLConnection = DriverManager.getConnection(fullEndpoint, USERNAME, PASSWORD);
+        this.MySQLStatement = mySQLConnection.createStatement();
         run asciitext = new run();
     }
 
     public void createDatabase(String DatabaseName) throws SQLException {
         this.Database = DatabaseName;
-        String query = "CREATE DATABASE IF NOT EXISTS "+DatabaseName+";";
+        String query = "CREATE DATABASE IF NOT EXISTS " + DatabaseName + ";";
         this.MySQLStatement.executeUpdate(query);
-        System.out.println(DatabaseName+" Was Created Successfully :)");
+        System.out.println(DatabaseName + " Was Created Successfully :)");
     }
 
     public void deleteDatabase(String DatabaseName) throws SQLException {
-
         this.Database = null;
-        String query = "DROP DATABASE "+ DatabaseName;
+        String query = "DROP DATABASE " + DatabaseName;
         this.MySQLStatement.executeUpdate(query);
-        System.out.println(DatabaseName+ "Was Successfully Deleted");
-
+        System.out.println(DatabaseName + " Was Successfully Deleted");
     }
 
-    public void useDatabase(){
-
-        if(this.Database != null) {
-            String query = "USE "+this.Database+";";
+    public void useDatabase() {
+        if (this.Database != null) {
+            String query = "USE " + this.Database + ";";
             try {
                 this.MySQLStatement.executeUpdate(query);
                 System.out.println(this.Database + " Was Used Successfully!");
@@ -110,10 +100,10 @@ public class MySQL {
         }
     }
 
-    public void useDatabase(String DatabaseName){
-        if(this.Database==null){
+    public void useDatabase(String DatabaseName) {
+        if (this.Database == null) {
             this.Database = DatabaseName;
-            String query = "USE "+DatabaseName+";";
+            String query = "USE " + DatabaseName + ";";
             try {
                 this.MySQLStatement.executeUpdate(query);
                 System.out.println(this.Database + " Was Used Successfully!");
@@ -123,7 +113,19 @@ public class MySQL {
         }
     }
 
-    public void createTable(String tableName, Map<String, String> columns)  {
+    public void showAllTables() {
+        try {
+            String query = "SHOW TABLES;";
+            ResultSet resultSet = this.MySQLStatement.executeQuery(query);
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString(1));
+            }
+        } catch (Exception e) {
+            System.err.println("Check the database is available or not!");
+        }
+    }
+
+    public void createTable(String tableName, Map<String, String> columns) {
         try {
             StringBuilder query = new StringBuilder("CREATE TABLE " + tableName + " (");
 
@@ -137,33 +139,26 @@ public class MySQL {
 
             this.MySQLStatement.executeUpdate(query.toString());
             System.out.println(tableName + " Was Created Successfully!");
+        } catch (Exception e) {
+            System.err.println("The table **" + tableName + "** could not be created or already exists.");
         }
-        catch(Exception e){
-            System.err.println("The table **"+tableName+"** could not be created or already exists.");
-        }
-
-
     }
 
-    public void deleteTable(String tableName) throws SQLException {
-        if(tableName!=null) {
-            String query = "DROP TABLE " + tableName;
-            this.MySQLStatement.executeUpdate(query);
-            System.out.println(tableName + " Was Deleted Successfully!");
+    public void deleteTable(String tableName) {
+        if (tableName != null) {
+            String query = "DROP TABLE " + tableName + ";";
+            try {
+                this.MySQLStatement.executeUpdate(query);
+                System.out.println(tableName + " Was Deleted Successfully!");
+            } catch (SQLException e) {
+                System.err.println("Failed to delete table " + tableName + ". Error: " + e.getMessage());
+            }
+        } else {
+            System.err.println("The table name must not be null or empty.");
         }
-        else{
-            System.err.println("The Table name not be a null value.");
-        }
-
     }
 
     public void printTable(String TableName) throws SQLException {
-        String query = "SELECT * FROM " + TableName;
-        ResultSet tableRs = this.MySQLStatement.executeQuery(query);
-        while (tableRs.next()){
 
-        }
     }
-
-
 }
