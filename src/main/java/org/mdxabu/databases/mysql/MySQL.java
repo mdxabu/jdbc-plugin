@@ -17,6 +17,10 @@ public class MySQL {
 
     private Statement MySQLStatement;
 
+    public MySQL() {
+        run asciitext = new run();
+    }
+
     public void setCredentials(String USERNAME, String PASSWORD) {
         this.USERNAME = USERNAME;
         this.PASSWORD = PASSWORD;
@@ -71,7 +75,6 @@ public class MySQL {
         String fullEndpoint = BASEENDPOINT + ENDPOINT + ":" + PORT;
         Connection mySQLConnection = DriverManager.getConnection(fullEndpoint, USERNAME, PASSWORD);
         this.MySQLStatement = mySQLConnection.createStatement();
-        run asciitext = new run();
     }
 
     public void createDatabase(String DatabaseName) throws SQLException {
