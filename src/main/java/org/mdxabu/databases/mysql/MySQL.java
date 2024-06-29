@@ -26,7 +26,7 @@ public class MySQL {
         this.PASSWORD = PASSWORD;
     }
 
-    public void setENDPOINT(String ENDPOINT, String PORT) {
+    public void setENDPOINT(String ENDPOINT) {
         this.ENDPOINT = ENDPOINT;
     }
 
