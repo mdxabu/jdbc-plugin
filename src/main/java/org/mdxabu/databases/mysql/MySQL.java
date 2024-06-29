@@ -26,7 +26,7 @@ public class MySQL {
         this.PASSWORD = PASSWORD;
     }
 
-    public void setENDPOINT(String ENDPOINT) {
+    public void setENDPOINT(String ENDPOINT, String PORT) {
         this.ENDPOINT = ENDPOINT;
     }
 
@@ -161,7 +161,4 @@ public class MySQL {
         }
     }
 
-    public void printTable(String TableName) throws SQLException {
-
-    }
 }
