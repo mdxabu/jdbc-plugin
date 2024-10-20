@@ -1,5 +1,8 @@
-
-# jdbc-plugin
+<p align="center" style="font-weight: bold;">
+<!-- <img src = "https://github.com/user-attachments/assets/764ba1d9-7c82-4f36-8e74-ac7605688030"> This is a header -->
+<img src ="https://github.com/user-attachments/assets/e643e07c-68b6-4dbc-b73e-00841a506af7"> <!---This is a logo -->
+<h1 align="center" style="font-weight: bold;">JDBC-PLUGIN</h1>
+</p>
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
