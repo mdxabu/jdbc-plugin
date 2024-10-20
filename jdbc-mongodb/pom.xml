@@ -5,17 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jdbcplugin</groupId>
-    <artifactId>jdbc-plugin</artifactId>
+    <artifactId>jdbc-mongodb</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>core</module>
-        <module>jdbc-mysql</module>
-        <module>jdbc-postgres</module>
-        <module>jdbc-sqlite</module>
-        <module>jdbc-mongodb</module>
-    </modules>
-
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
