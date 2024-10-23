@@ -1,0 +1,27 @@
+name: Windows Maven Wrapper Build
+
+env:
+  MAVEN_ARGS: -B -C -V -ntp -Dhttp.keepAlive=false -e
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Windows Java ${{ matrix.java }} Maven Wrapper
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        java: [8]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Build Project
+        run: ./mvnw.cmd %MAVEN_ARGS% clean install
