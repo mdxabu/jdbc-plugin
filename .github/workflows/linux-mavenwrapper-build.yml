@@ -3,7 +3,7 @@ name: Linux Maven Wrapper Build
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -20,5 +20,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
+      - name: Set executable permission for mvnw
+        run: chmod +x ./mvnw
       - name: Build Project
         run: ./mvnw -B -C -V -ntp clean install
