@@ -22,5 +22,9 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Set executable permission for mvnw
         run: chmod +x ./mvnw
+
+      - name: Verify mvnw permissions
+        run: ls -l ./mvnw
+
       - name: Build Project
         run: ./mvnw -B -C -V -ntp clean install

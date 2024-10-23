@@ -16,11 +16,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
+
       - name: Set executable permission for mvnw
-        run: chmod +x ./mvnw
+        run: chmod +x ./mvnw || echo "Failed to set permissions"
+
+      - name: Verify mvnw permissions
+        run: ls -l ./mvnw
+
       - name: Build Project
         run: ./mvnw -B -C -V -ntp clean install
